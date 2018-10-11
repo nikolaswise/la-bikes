@@ -1,0 +1,26 @@
+
+.form {
+  display: none;
+}
+.form-confirm {
+  display: none;
+}
+.form.is-active {
+  display: block;
+}
+.form-confirm.is-active {
+  display: block;
+}
+
+.form label {
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.form textarea {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 0.66rem;
+  font-family: 'Gotham', sans-serif;
+}

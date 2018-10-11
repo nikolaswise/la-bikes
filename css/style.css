@@ -1,10 +1,9 @@
+@import './type.css';
 @import './modal.css';
+@import './map.css';
+@import './forms.css';
+@import './buttons.css';
 
-body {
-  font-family: 'Gotham', sans-serif;
-  margin: 0;
-  padding: 0;
-}
 
 #map {
   position:absolute;
