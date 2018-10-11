@@ -8,6 +8,8 @@
     "watch": "parcel watch index.html",
     "serve": "live-server dist/",
     "build": "parcel build index.html",
+    "predeploy": "run-s build",
+    "deploy": "surge dist/ --domain bikeshare.nikolas.ws",
     "test": "test"
   },
   "repository": {
@@ -30,6 +32,7 @@
     "live-server": "^1.2.0",
     "npm-run-all": "^4.1.3",
     "parcel-bundler": "^1.10.2",
+    "surge": "^0.20.1",
     "uuid": "^3.3.2"
   }
 }
