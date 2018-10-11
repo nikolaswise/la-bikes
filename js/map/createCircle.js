@@ -1,6 +1,7 @@
 // Code snippet for determining radius from points taken from:
 // https://stackoverflow.com/questions/37599561/drawing-a-circle-with-the-radius-in-miles-meters-with-mapbox-gl-js
 
+// Grabs coords, and returns a GeoJSON feature of a circle km radius
 export const createCircle = (center, km, points = 64) => {
   let coords = {
     latitude: center[1],

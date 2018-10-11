@@ -1,3 +1,4 @@
+// Simple little Pup Sub bus, taked from: https://github.com/nikolaswise/event-broadcaster
 const channels = {
   z: {
     channel: 'z',

@@ -2,6 +2,7 @@ import {popups} from './popups'
 import {createCircle} from './createCircle'
 import {stations} from './future-bikestations.js'
 
+// Add our GeoJSON to the map and render the markers
 const addPoints = (map) => {
   map.addSource('stations', {
     type: 'geojson',
@@ -20,6 +21,7 @@ const addPoints = (map) => {
   });
 }
 
+// Render circles for an given source id
 const drawCircles = (map, id, opacity) => {
   map.addLayer({
     "id": id,
@@ -35,11 +37,12 @@ const drawCircles = (map, id, opacity) => {
 }
 
 
+// Calculcate two radius circles around our points
 const calcCircles = (map) => {
   let circles1k = stations.features.map(feature => createCircle(feature.geometry.coordinates, 1))
   let circles3k = stations.features.map(feature => createCircle(feature.geometry.coordinates, 3))
-  // let circles5k = stations.features.map(feature => createCircle(feature.geometry.coordinates, 5))
 
+  // For each set, add sources and render.
   circles1k.forEach((circle, i) => {
     map.addSource(`circles1k-${i}`, circle);
     drawCircles(map, `circles1k-${i}`, 0.6)
@@ -51,6 +54,7 @@ const calcCircles = (map) => {
   })
 }
 
+// Draw the whole map
 export const draw = () => {
   var map = new mapboxgl.Map({
     container: 'map',
@@ -60,10 +64,13 @@ export const draw = () => {
     zoom: 13
   })
 
+  // Add zooom controls
   map.addControl(new mapboxgl.NavigationControl());
+
+  // On map load, add our points, draw our circles, and bind popup handlers.
   map.on('load', () => {
     addPoints(map)
     calcCircles(map)
+    popups(map)
   })
-  popups(map)
 }

@@ -1,5 +1,6 @@
 import bus from '../bus'
 
+// Template string for popup content
 const template = (feature) => `
   <h2>Bike Station #${feature.properties.FID}</h2>
   <form class="form is-active js-feedback-form" data-id="${feature.properties.FID}">
@@ -24,7 +25,7 @@ const template = (feature) => `
 
 
 export const popups = (map) => {
-
+  // On click, grab coords and render a popup.
   map.on('click', 'points', function (e) {
     var coordinates = e.features[0].geometry.coordinates.slice();
     var description = template(e.features[0])
@@ -37,6 +38,8 @@ export const popups = (map) => {
       .setLngLat(coordinates)
       .setHTML(description)
       .addTo(map);
+      // Emit a bus event that lets the app know dom changed
+      // now we need bind the new dom!
       bus.emit('form:bind')
     });
 
