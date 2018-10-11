@@ -1,13 +1,15 @@
+import {popups} from './popups'
+
 const addPoints = (map) => {
   map.on('load', () => {
-    map.addSource('points', {
+    map.addSource('stations', {
       type: 'geojson',
       data: '/future-bikestations.geojson'
     });
     map.addLayer({
-      id: "unclustered-point",
+      id: "points",
       type: "circle",
-      source: "points",
+      source: "stations",
       paint: {
         "circle-color": "#4dc7e0",
         "circle-radius": 6,
@@ -30,4 +32,5 @@ export const draw = () => {
   map.addControl(new mapboxgl.NavigationControl());
 
   addPoints(map)
+  popups(map)
 }

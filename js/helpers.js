@@ -1,0 +1,1 @@
+export const $ = (selector, context = document) => Array(...context.querySelectorAll(selector))
