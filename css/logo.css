@@ -1,0 +1,7 @@
+.alta-logo {
+  position: absolute;
+  top: 0;
+  right: 62px;
+  z-index: 50;
+  max-width: 6rem;
+}
